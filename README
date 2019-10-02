@@ -1,0 +1,54 @@
+
+/************************************************************
+* Linking:                                                  *
+* - define SOC_C6678                                        *
+* - consider memory configuration explained below           *
+* - your linker command file must include the following:    *
+*************************************************************
+*************************************************************				
+*    .ipc_shared_section: {*} > MSMCSRAM                    *
+*    .ipc_nocache_section     > MSMCSRAM_NC_VIRT            *
+*    .ipc_local_data          > L2SRAM                      *
+*    .ipc_shared_section_1    > MSMCSRAM                    *
+*    .ipc_shared_section_2    > MSMCSRAM                    *
+*    .ipc_shared_section_3    > MSMCSRAM                    *
+*    .ipc_shared_section_4    > MSMCSRAM                    *
+*    .ipc_shared_section_5    > MSMCSRAM                    *
+*    .ipc_shared_section_6    > MSMCSRAM                    *
+*************************************************************
+*************************************************************/
+
+/***********************************************************************
+* Custom memory/cache configuration:                                   *
+* For the purpose of IPC, we will place some flags in MSMCSRAM.        *
+* Since caching of MSMCSRAM can not be disabled and since we           *
+* would like to avoid writing-back/invalidating the cache each time    *
+* we consult a flag, we create a virtual, non-cached SRAM with virtual *
+* addresses lying outside of the physical address ranges of the        *
+* DSP. We then map the virtual address space back to a chunk of the    *
+* physical memory and disable caching for the virtual SRAM.            *
+*                                                                      *
+* Related Documents:                                                   *
+* SPRS691E, physical address space (section 2.3)                       *
+* SPRUGWOC, memory attribute registers (MAR) (section 4.4)             *
+* SPRUGY8, cache control and functions                                 *
+*                                                                      *
+* Note: For this to work, a platform package must be created including *
+* 1.) A virtual memory space of length MSMCSRAM_NC_SIZE and start      *
+*     address MSMCSRAM_NC_START_ADDR. This space must fall within      *
+*     one or several MARs (modify config_cache()).                     *
+* 2.) A physical address space with length MSMCSRAM_NC_SIZE and start  *
+*     address MSMCSRAM_START_ADDR.                                     *
+* 3.) Place section .ipc_nocache_section in the virtual memory space.  *
+************************************************************************/
+
+/***************************************************
+* Inter-Processor Communication - GAME RULES       *
+* Master:                                          *
+* - On every ipc_master_set_req(_slave_i),         *
+*    an ipc_master_wait_ack(_slave_i) MUST follow  *
+*                                                  *
+* Slaves:                                          *
+* - On every ipc_slave_wait_req,                   *
+*    an ipc_slave_set_ack MUST follow              *
+****************************************************/
