@@ -1,0 +1,34 @@
+myBoard_VIRTNC.zip: Platform.xdc
+Platform.xdc:
+myBoard_VIRTNC.zip: Platform.xs
+Platform.xs:
+myBoard_VIRTNC.zip: config.bld
+config.bld:
+myBoard_VIRTNC.zip: package/.vers_b200
+package/.vers_b200:
+myBoard_VIRTNC.zip: package/.vers_g200
+package/.vers_g200:
+myBoard_VIRTNC.zip: package/.vers_r200
+package/.vers_r200:
+myBoard_VIRTNC.zip: package/.xdc-E10
+package/.xdc-E10:
+myBoard_VIRTNC.zip: package/build.cfg
+package/build.cfg:
+myBoard_VIRTNC.zip: package/myBoard_VIRTNC.ccs
+package/myBoard_VIRTNC.ccs:
+myBoard_VIRTNC.zip: package/myBoard_VIRTNC.class
+package/myBoard_VIRTNC.class:
+myBoard_VIRTNC.zip: package/myBoard_VIRTNC.java
+package/myBoard_VIRTNC.java:
+myBoard_VIRTNC.zip: package/myBoard_VIRTNC.sch
+package/myBoard_VIRTNC.sch:
+myBoard_VIRTNC.zip: package/package.bld.xml
+package/package.bld.xml:
+myBoard_VIRTNC.zip: package/package.defs.h
+package/package.defs.h:
+myBoard_VIRTNC.zip: package/package_myBoard_VIRTNC.c
+package/package_myBoard_VIRTNC.c:
+myBoard_VIRTNC.zip: package.bld
+package.bld:
+myBoard_VIRTNC.zip: package.xdc
+package.xdc:

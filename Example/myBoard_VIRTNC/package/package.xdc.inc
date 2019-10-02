@@ -1,0 +1,13 @@
+package.xdc
+Platform.xdc
+Platform.xs
+package/myBoard_VIRTNC.sch
+package/.vers_g200
+package/.vers_r200
+package/.vers_b200
+package/.xdc-E10
+package/myBoard_VIRTNC.java
+package/myBoard_VIRTNC.class
+package/package_myBoard_VIRTNC.c
+package/package.defs.h
+package/myBoard_VIRTNC.ccs

@@ -1,0 +1,17 @@
+myBoard_VIRTNC/Platform.xdc
+myBoard_VIRTNC/Platform.xs
+myBoard_VIRTNC/config.bld
+myBoard_VIRTNC/package/.vers_b200
+myBoard_VIRTNC/package/.vers_g200
+myBoard_VIRTNC/package/.vers_r200
+myBoard_VIRTNC/package/.xdc-E10
+myBoard_VIRTNC/package/build.cfg
+myBoard_VIRTNC/package/myBoard_VIRTNC.ccs
+myBoard_VIRTNC/package/myBoard_VIRTNC.class
+myBoard_VIRTNC/package/myBoard_VIRTNC.java
+myBoard_VIRTNC/package/myBoard_VIRTNC.sch
+myBoard_VIRTNC/package/package.bld.xml
+myBoard_VIRTNC/package/package.defs.h
+myBoard_VIRTNC/package/package_myBoard_VIRTNC.c
+myBoard_VIRTNC/package.bld
+myBoard_VIRTNC/package.xdc

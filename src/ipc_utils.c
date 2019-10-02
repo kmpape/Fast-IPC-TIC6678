@@ -171,12 +171,8 @@ void ipc_slave_init(Uint32 volatile selfId) {
     /* Reset ncalls in case the DSP was restarted */
     ipc_slave_reset_num_requests();
     _set_slave_i_is_alive(selfId);
-    //ipc_slave_reset_req(); //maybe this shouldn't be called by slaves here
-    CACHE_wbInvAllL1d(CACHE_WAIT);
-    //_mfence();
 #ifdef IPC_ASSERTS
     assert(*ncalls == 0);
-    //assert(*req_flag != 1);
     /* Check if pointers have been assigned */
     assert(req_flag != NULL);
     assert(ack_flag != NULL);
@@ -215,24 +211,13 @@ void ipc_slave_init2(void) {
     assert(ack_flag);
     assert(ncalls);
     assert(ipc_selfId);
-#if IPC_DEBUGLEVEL >= 4
-    // TODO: this equality check somehow fails but the later assertion not??
-    if (*ipc_selfId == local_selfId)
-        printf("*ipc_selfId=%d != local_selfId=%d\n", *ipc_selfId, local_selfId);
-#endif
     assert(*ipc_selfId == local_selfId);
 #endif
     /* Reset ncalls in case the DSP was restarted */
     ipc_slave_reset_num_requests();
     _set_slave_i_is_alive(local_selfId);
-    //ipc_slave_reset_req(); //maybe this shouldn't be called by slaves here
-#if 0
-    CACHE_wbInvAllL1d(CACHE_WAIT);
-#endif
-    //_mfence();
 #ifdef IPC_ASSERTS
     assert(*ncalls == 0);
-    //assert(*req_flag != 1);
     /* Check if pointers have been assigned */
     assert(req_flag != NULL);
     assert(ack_flag != NULL);
@@ -854,11 +839,6 @@ void config_cache(Uint32 volatile selfId) {
     }
 #endif
 
-    /* Invalidate L1D cache */
-#if 0
-    CACHE_invAllL1dWait();
-#endif
-
     /* Set L2 cache size */
     // This can eventually mess up with variables located in L2 memory
 #if 0
@@ -872,10 +852,5 @@ void config_cache(Uint32 volatile selfId) {
                (int)CACHE_getL2Size(),
                (int)CACHE_getL1DSize(),
                (int)CACHE_getL1PSize());
-#endif
-
-    /* Wait until all memory operations terminate */
-#if 0
-    _mfence();
 #endif
 }

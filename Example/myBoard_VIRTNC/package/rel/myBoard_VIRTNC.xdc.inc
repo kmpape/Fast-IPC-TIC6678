@@ -1,0 +1,9 @@
+package.bld
+config.bld
+Platform.xs
+package.xdc
+Platform.xdc
+package/package.bld.xml
+package/build.cfg
+package/package.xdc.inc
+package/package.cfg.xdc.inc
