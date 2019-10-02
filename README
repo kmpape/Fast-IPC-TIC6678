@@ -6,15 +6,9 @@
 * - your linker command file must include the following:    *
 *************************************************************
 *************************************************************				
-*    .ipc_shared_section: {*} > MSMCSRAM                    *
+*    .ipc_shared_section      > MSMCSRAM                    *
 *    .ipc_nocache_section     > MSMCSRAM_NC_VIRT            *
 *    .ipc_local_data          > L2SRAM                      *
-*    .ipc_shared_section_1    > MSMCSRAM                    *
-*    .ipc_shared_section_2    > MSMCSRAM                    *
-*    .ipc_shared_section_3    > MSMCSRAM                    *
-*    .ipc_shared_section_4    > MSMCSRAM                    *
-*    .ipc_shared_section_5    > MSMCSRAM                    *
-*    .ipc_shared_section_6    > MSMCSRAM                    *
 *************************************************************
 *************************************************************/
 
